@@ -291,6 +291,7 @@ $('#submit').click(function(){
         $('#alertSend').html('The message was sent Successfully');
         $('#alertSend').css({'display':'block' , 'color':'green'});
         resetForm();
+        $('#submit').attr('disabled' , 'disabled');
         setTimeout(() => {
             location.reload();
         }, 1000);
