@@ -92,7 +92,7 @@ $('.anchors .trending').click(function(){
 // get movie by name..
 
 $('#searchName').on('input' , function(){
-    let currentName = ($('#searchName').val()).toLowerCase();
+    currentName = ($('#searchName').val()).toLowerCase();
     if(currentName != '' || currentName == null){
         searchNameMovies(currentName);
     }
@@ -117,6 +117,8 @@ async function searchNameMovies(index){
 
 let url;
 let movies = [];
+let row;
+let currentName;
 
 async function getMovies(index){
     try {
@@ -145,7 +147,7 @@ async function getTrendingMovies(){
 // view all movies..
 
 function displayMovies(){
-    let row = ``;
+    row = ``;
     for(let i = 0; i < movies.length; i++){
         row += 
         `
@@ -166,6 +168,35 @@ function displayMovies(){
     }
     $('#film').html(row);
 }
+
+// search in that list by title
+
+$('#searchAtList').on('input' , function(){
+    currentName = ($('#searchAtList').val()).toLowerCase();
+    row = ``;
+    for(let i = 0; i< movies.length; i++){
+        if(movies[i].title.toLowerCase().includes(currentName))
+        {
+            row += 
+            `
+            <div class="col-md-6 col-lg-4">
+                <div class="movie text-center">
+                    <img src="https://image.tmdb.org/t/p/w500${movies[i].poster_path}" class="w-100" alt="">
+                    <div class="movTitle w-100 mx-auto d-flex justify-content-center align-items-center flex-column p-2">
+                        <h2 class="mb-3">${movies[i].title}</h2>
+                        <p class="mb-3">${movies[i].overview}</p>
+                        <h5>Rate..</h5>
+                        <h6 class="active nb-3">${movies[i].vote_average}</h6>
+                        <h5>First Show..</h5>
+                        <h6 class="active">${movies[i].release_date}</h6>
+                    </div>
+                </div>
+            </div>
+            `
+        }
+        $('#film').html(row);
+    }
+})
 
 
 // module from (validation.js)
