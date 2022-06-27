@@ -218,3 +218,28 @@ aside{
         margin-left: 80px !important;
     }
 }
+@media screen and (max-width: 500px){
+    .total h2{
+        margin-left: 70px !important;
+        margin-right: auto !important;
+    }
+    .buttons{
+        display: flex;
+        flex-direction: column;
+    }
+    #alertSend{
+        margin-left: 80px !important;
+        margin-right: auto !important;
+    }
+    #submit{
+        width: 50%;
+        margin-left: 120px !important;
+        margin-right: auto !important;
+        margin-bottom: 20px !important;
+    }
+    #reset{
+        width: 50%;
+        margin-left: 120px !important;
+        margin-right: auto !important;
+    }
+}
